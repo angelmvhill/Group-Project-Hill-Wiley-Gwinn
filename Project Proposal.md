@@ -1,5 +1,8 @@
 # Project Proposal #
-
+Team Members:
+-   Angel Hill
+-   Julian Wiley
+-   Richard Gwinn
 ## 1. The Big Idea ##
 The main goal of our project is to create a stock portfolio managed by trading algorithms. The trading algorithms would conduct automated trades based on a strategy that we either programmed the algorithm to follow. We can also potentially train our models on a data set in order to create better models. We will also use various statistical tests in Python to evaluate performance, risk, and overfitting of our models.
 ## 2. Learning Goals ## 
