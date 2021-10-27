@@ -1,0 +1,8 @@
+backtrader==
+backtesting==
+zipline==
+alphalens==
+moonshot==
+empyrical==
+vnpy==
+alpaca_trade_api==
