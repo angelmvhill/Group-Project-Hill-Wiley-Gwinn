@@ -1,4 +1,4 @@
-# OIM 3640 Problem Solving and Software Design Final Project 
+## OIM 3640 Problem Solving and Software Design Final Project 
 
 [Libraries we are considering using](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/edit/main/docs/libraries.md)
 
