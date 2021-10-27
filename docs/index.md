@@ -1,3 +1,7 @@
+# OIM 3640 Problem Solving and Software Design Final Project 
+
+[Libraries we are considering using](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/edit/main/docs/libraries.md)
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
