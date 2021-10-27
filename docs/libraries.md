@@ -11,3 +11,5 @@ Backtesting.py | Modular, extensible backtesting library for python | Backtestin
 Backtrader | Backtrader Trading Engine | Trading Strategy Backend | https://github.com/mementum/backtrader | 
 Zipline | Zipline Trading Engine | Backtrading, Strategy Development | https://github.com/quantopian/zipline |
 Alpaca | Alpaca Python API | Paper Trading | https://github.com/alpacahq/alpaca-trade-api-python | 
+Vectorbt | Vectorized Backtesting | Backtesting for Machine Learning | https://github.com/polakowo/vectorbt |
+FinMind | Open Financial Data | Data | https://github.com/FinMind/FinMind |
