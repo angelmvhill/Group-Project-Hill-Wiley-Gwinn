@@ -3,6 +3,7 @@ title: Libraries
 ---
 # Libraries Overview # 
 This file lists the various libraries that we are considering using
+
 Library  Name        |            Description                |             Purpose                 |                     URL               
 ---------------------|---------------------------------------|-------------------------------------|---------------------------------------
 AlphaVantage| AlphaVantage Python API | Get Quotes, Fundamentals, and other financial data | https://github.com/RomelTorres/alpha_vantage 
