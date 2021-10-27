@@ -1,5 +1,6 @@
 ## OIM 3640 Problem Solving and Software Design Final Project 
 
+Trading Bot Project
 [Libraries we are considering using](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/edit/main/docs/libraries.md)
 
 ## Welcome to GitHub Pages
