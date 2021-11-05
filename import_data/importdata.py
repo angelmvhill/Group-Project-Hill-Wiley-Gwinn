@@ -3,7 +3,8 @@ import pandas as pd
 import yfinance as yf
 # import yfinance.stock_info as si
 
-df = pd.read_csv("data/AAPL.csv")
+df_stock = pd.read_csv(r"data/AAPL.csv")
+df_fin = pd.read_csv (r"data/AAPLfinacials.csv")
 # print(df)
 
 # aapl_data = si.get_quote_table("MSFT")
