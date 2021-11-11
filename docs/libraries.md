@@ -14,3 +14,5 @@ Zipline | Zipline Trading Engine | Backtrading, Strategy Development | https://g
 Alpaca | Alpaca Python API | Paper Trading | https://github.com/alpacahq/alpaca-trade-api-python 
 Vectorbt | Vectorized Backtesting | Backtesting for Machine Learning | https://github.com/polakowo/vectorbt 
 FinMind | Open Financial Data | Data | https://github.com/FinMind/FinMind 
+QLib | AI-Oriented Trading Platform | ML Trading | https://github.com/microsoft/qlib 
+
