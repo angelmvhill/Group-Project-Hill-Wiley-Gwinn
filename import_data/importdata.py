@@ -20,7 +20,7 @@ print(df_fin)
 # aapl_data = si.get_quote_table("MSFT")
 # print(aapl_data)
 
-apple = yf.Ticker('aapl')
+# apple = yf.Ticker('aapl')
 # print(apple)
 
 # print((apple.info['trailingPE']))
