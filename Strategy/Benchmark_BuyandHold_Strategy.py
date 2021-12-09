@@ -6,7 +6,7 @@ class BuyandHold(bt.Strategy):
 
     def starting_cash(self):
         #set starting cash value
-        self.val_start = self.broker.get_cash()  # keep the starting cash
+        self.val_start = self.broker.get_cash()
 
     def purchase_shares(self):
         # Buy shares with all available cash
