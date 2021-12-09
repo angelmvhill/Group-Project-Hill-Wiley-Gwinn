@@ -19,7 +19,7 @@ class BuyandHold(bt.Strategy):
         print('ROI:                     {:.2f}%'.format(100.0 * self.roi))
 
 os.chdir(r'C:/Users/angel/Documents/Documents/GitHub/Group-Project-Hill-Wiley-Gwinn/Data')
-data = bt.feeds.YahooFinanceData(dataname="AAPL.csv")
+data = bt.feeds.YahooFinanceData(dataname="AAPL_1min.csv")
 
 cerebro = bt.Cerebro()
 cerebro.adddata(data)
