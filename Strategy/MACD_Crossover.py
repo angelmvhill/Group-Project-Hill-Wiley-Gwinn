@@ -78,13 +78,22 @@ class MACD_Crossover(bt.Strategy):
 
         share_purchase = int(self.data.close / self.data.close)
         
-        if not self.position:
-            if self.mcross == 1:
-                self.order = self.buy(size = share_purchase)
-                self.log('BUY CREATE, %.2f' % self.data.close[0])
-            
+        if self.mcross == 1:
+            self.order = self.buy(size = share_purchase)
+            self.log('BUY CREATE, %.2f' % self.data.close[0])
+        elif self.macd.signal > self.macd.signal:
+            if not self.position:
+                if self.macd.macd[0] - self.signal.signal[0] > self.macd.macd[-1] - self.macd.signal[-1]:
+                    self.order = self.buy(size = share_purchase)
+                    self.log('BUY CREATE, %.2f' % self.data.close[0])
+
         else:
-            if self.mcross == -1:
+            if self.macd.signal > self.macd.signal:
+                if not self.position:
+                    if self.macd.macd[0] - self.signal.signal[0] < self.macd.macd[-1] - self.macd.signal[-1]:
+                        self.order = self.sell(size = share_purchase)
+                        self.log('SELL CREATE, %.2f' % self.data.close[0])
+            elif self.mcross == -1:
                 self.order = self.sell(size = share_purchase)
                 self.log('SELL CREATE, %.2f' % self.data.close[0])
 
@@ -95,10 +104,6 @@ if __name__ == '__main__':
     # Add a strategy
     cerebro.addstrategy(MACD_Crossover)
 
-    # Datas are in a subfolder of the samples. Need to find where the script is
-    # because it could have been called from anywhere
-    # modpath = os.path.dirname(os.path.abspath(sys.argv[0]))
-    # datapath = os.path.join(modpath, r'C:\Users\angel\Documents\Documents\GitHub\Group-Project-Hill-Wiley-Gwinn\Data')
     os.chdir(r'C:/Users/angel/Documents/Documents/GitHub/Group-Project-Hill-Wiley-Gwinn/Data')
     print(os.listdir())
     # Create a Data Feed
