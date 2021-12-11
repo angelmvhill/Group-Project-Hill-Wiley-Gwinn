@@ -28,9 +28,11 @@ Nevertheless, here are the outputs and backtesting results of the strategy.
 Note: Both portfolios started at $2500 USD.
 
 Benchmark Strategy Results:
+
 ![image](https://user-images.githubusercontent.com/77561896/145662442-9603bab9-e3ed-45a3-af73-13024eb07b97.png)
 
 MACD Strategy Results:
+
 
 
 ## Welcome to GitHub Pages
