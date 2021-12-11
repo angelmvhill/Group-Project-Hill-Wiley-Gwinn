@@ -42,7 +42,9 @@ class MACD_Crossover(bt.Strategy):
 
         self.sma = bt.indicators.SMA(self.data, period=self.p.smaperiod)
         self.smadir = self.sma - self.sma(-self.p.dirperiod)
+
     def add_data(cerebro):
+        # add data feed - data class is created below
         data=MyFeed()
         cerebro.add_data(data)
         return data 
@@ -52,11 +54,13 @@ class MACD_Crossover(bt.Strategy):
         self.val_start = self.broker.get_cash()
 
     def notify_order(self, order):
+        # order logging and configuration
         if order.status == order.Completed:
             pass
 
         if not order.alive():
-            self.order = None  # indicate no order is pending
+            # indicate no order is pending
+            self.order = None
             
         if order.status in [order.Submitted, order.Accepted]:
             # Buy/Sell order submitted/accepted to/by broker
@@ -79,9 +83,8 @@ class MACD_Crossover(bt.Strategy):
         self.order = None
 
     def next(self):
-        # Simply log the closing price of the series from the reference
-        self.log('Close, %.2f' % self.data.close[0])
-#        super(MACD_Crossover, self).next()
+        # define strategy
+        self.log('Close, %.2f' % self.data.close[0]) # log the closing price of the series from the reference
 
         share_purchase = int(self.data.close / self.data.close)
         
@@ -104,7 +107,7 @@ class MACD_Crossover(bt.Strategy):
                 self.order = self.sell(size = share_purchase)
                 self.log('SELL CREATE, %.2f' % self.data.close[0])
 
-# class for loading 1 min dataset - wrote by Julian
+# class for loading 1 min interval dataset - written by Julian and editted by Angel
 import pandas as pd
 from backtrader.feed import DataBase
 from backtrader import date2num
@@ -152,7 +155,7 @@ class MyFeed(DataBase):
         return True
 
 if __name__ == '__main__':
-    # Create a cerebro entity
+    # instantiate cerebro class from backtrader
     cerebro = bt.Cerebro()
 
     # Add a strategy
@@ -168,17 +171,17 @@ if __name__ == '__main__':
     # Add the Data Feed to Cerebro
     cerebro.adddata(data)
 
-    # Set our desired cash start
+    # Set starting cash value
     cerebro.broker.setcash(2500)
 
     # Set the commission - 0.1% ... divide by 100 to remove the %
     cerebro.broker.setcommission(commission=0.001)
 
-    # Print out the starting conditions
+    # Print out initial portfolio value
     print('Starting Portfolio Value: %.2f' % cerebro.broker.getvalue())
 
     # Run backtest
     cerebro.run()
 
-    # Print out the final result
+    # Print out final portfolio value
     print('Final Portfolio Value: %.2f' % cerebro.broker.getvalue())

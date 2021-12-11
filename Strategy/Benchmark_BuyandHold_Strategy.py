@@ -21,10 +21,46 @@ class BuyandHold(bt.Strategy):
         # set starting cash value
         self.val_start = self.broker.get_cash()
     
-    def purchase_shares(self):
+    def next(self):
         # Buy shares with all available cash
         num_of_shares = int(self.broker.get_cash() / self.data.close)
-        self.buy(size = num_of_shares) 
+        
+        if not self.position:
+            self.buy(size = num_of_shares)
+        if (len(self.datas) - len(self)) == 1:
+            self.close()
+    
+    def log(self, txt, dt=None):
+        '''Logging function for strategy'''
+        dt = dt or self.datas[0].datetime.date(0)
+        print('%s, %s' % (dt.isoformat(), txt))
+
+    def notify_order(self, order):
+        if order.status == order.Completed:
+            pass
+
+        if not order.alive():
+            self.order = None  # indicate no order is pending
+            
+        if order.status in [order.Submitted, order.Accepted]:
+            # Buy/Sell order submitted/accepted to/by broker
+            return
+        
+        # Check if an order has been completed
+        # Attention: broker could reject order if not enough cash
+        if order.status in [order.Completed]:
+            if order.isbuy():
+                self.log('BUY EXECUTED, %.2f' % order.executed.price)
+            elif order.issell():
+                self.log('SELL EXECUTED, %.2f' % order.executed.price)
+
+            self.bar_executed = len(self)
+
+        elif order.status in [order.Canceled, order.Margin, order.Rejected]:
+            self.log('Order Canceled/Margin/Rejected')
+
+        # Write down: no pending order
+        self.order = None
 
     def calc_roi(self):
         # calculate returns
@@ -85,7 +121,7 @@ if __name__ == '__main__':
     # Add a strategy
     cerebro.addstrategy(BuyandHold)
 
-    # Create a Data Feed
+    # Create a Data Feed 
 
     data = MyFeed()
 
