@@ -45,6 +45,8 @@ Although this isn't much to look at, we have too much data to create a visual ou
 
 ![image](https://user-images.githubusercontent.com/77561896/145662715-e927ea50-31e0-42d9-b2d1-0a8610abd184.png)
 
+To learn more about Spark dataframes, click [here](https://spark.apache.org/docs/latest/sql-programming-guide.html).
+
 ## Summary
 
 Overall, this project was very successful. We accomplished a lot of goals and were able to establish a solid framework that we are excited to continue building off of in the future.
