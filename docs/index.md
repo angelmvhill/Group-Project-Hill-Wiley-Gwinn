@@ -1,7 +1,18 @@
 ## OIM 3640 Problem Solving and Software Design Final Project 
 
-Trading Bot Project
-[Libraries we are considering using](https://julianwileymac.github.io/Group-Project-Hill-Wiley-Gwinn/libraries)
+Trading Bot Project:
+
+Click here to see the [libraries we used](https://julianwileymac.github.io/Group-Project-Hill-Wiley-Gwinn/libraries)
+
+## Project Summary and Goals
+
+The goal of this project was to create a framework for developing, training, and backtesting algorithmic trading models. Although we created a strategy to backtest, the focus was not on the strategy itself, but rather the framework itself. THe strategy is replaceable, and the framework around the sample strategy we created is what will fuel our future algotrading strategy developments.
+
+## User Instructions/README
+
+For a usage summary and installation guide, see the [README file](https://github.com/angelmvhill/Group-Project-Hill-Wiley-Gwinn#readme)
+
+
 
 ## Welcome to GitHub Pages
 
@@ -40,3 +51,5 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+
