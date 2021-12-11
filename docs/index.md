@@ -10,8 +10,27 @@ The goal of this project was to create a framework for developing, training, and
 
 ## User Instructions/README
 
-For a usage summary and installation guide, see the [README file](https://github.com/angelmvhill/Group-Project-Hill-Wiley-Gwinn#readme)
+For a usage summary and installation guide, see the [README file](https://github.com/angelmvhill/Group-Project-Hill-Wiley-Gwinn#readme).
 
+## Strategy Performance
+
+Compared to the benchmark strategy, the sample MACD strategy performed horribly. Despite the strategy losing money, this project is still a successful project. As mentioned before, the main goal of this project was to develop a framework for developing trading algorithms, rather than developing a successful trading algorithm. The framework is more important than the strategy itself because it is what allows it to be successful. Without a robust development framework for the strategy, a myraid of issues can occur.
+
+To name a few:
+- incorrect backtesting output, resulting in deploying an unprofitable strategy
+- latencies when sending orders resulting in orders being sent late or not being 
+- logging orders incorrectly, resulting in showing profits when in reality we are losing money
+
+For this reason, it is not yet necessary to develop a profitable strategy, but rather it is more important that our framework was airtight. Given the time available to build out this programt, we created a framework that was a robust as possible.
+
+Nevertheless, here are the outputs and backtesting results of the strategy.
+
+Note: Both portfolios started at $2500 USD.
+
+Benchmark Strategy Results:
+![image](https://user-images.githubusercontent.com/77561896/145662442-9603bab9-e3ed-45a3-af73-13024eb07b97.png)
+
+MACD Strategy Results:
 
 
 ## Welcome to GitHub Pages
