@@ -1,7 +1,5 @@
 ## OIM 3640 Problem Solving and Software Design Final Project 
 
-Trading Bot Project:
-
 Click here to see the [libraries we used](https://julianwileymac.github.io/Group-Project-Hill-Wiley-Gwinn/libraries)
 
 ## Project Summary and Goals
