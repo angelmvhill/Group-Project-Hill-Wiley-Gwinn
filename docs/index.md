@@ -39,48 +39,12 @@ MACD Strategy Results:
 
 ![image](https://user-images.githubusercontent.com/77561896/145663200-c78c9712-7ed4-4afa-8c9b-01f02d36db28.png)
 
-## EMR
+## Notebook Output for Inputting Data into EMR
+
+Although this isn't much to look at, we have too much data to create a visual output without spending too much money (the data set is 100 GB). This is the first 20 rows of a Spark dataframe, which is qthe equivalent to a pandas dataframe in Spark. The main difference is that this dataframe is representational, meaning that it tells the machine where the data is stored, rather than actually importing it into memory. With the knowledge of this location, the machine can querie the data when needed.
 
 ![image](https://user-images.githubusercontent.com/77561896/145662715-e927ea50-31e0-42d9-b2d1-0a8610abd184.png)
 
+## Summary
 
-
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
-
-
+Overall, this project was very successful. We accomplished a lot of goals and were able to establish a solid framework that we are excited to continue building off of in the future.
