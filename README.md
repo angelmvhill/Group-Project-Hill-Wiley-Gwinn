@@ -6,7 +6,7 @@ This project contains 3 main parts: an algorithmic trading strategy framework, a
 
 The goal of this project was to create a framework for developing, training, and backtesting algorithmic trading models. Although we created a strategy to backtest, the focus was not on the strategy itself, but rather the framework itself. THe strategy is replaceable, and the framework around the sample strategy we created is what will fuel our future algotrading strategy developments.
 
-To see the see our full project website in Github pages, click this [link](https://angelmvhill.github.io/Group-Project-Hill-Wiley-Gwinn/)
+To see the see our full project website in Github pages, click this [link](https://angelmvhill.github.io/Group-Project-Hill-Wiley-Gwinn/).
 
 ## Algotrading Strategy Framework
 
