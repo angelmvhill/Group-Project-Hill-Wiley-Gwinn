@@ -12,9 +12,9 @@ class MACD_Crossover(bt.Strategy):
 
     params = {
         # Standard MACD Parameters
-        'macd1': 12,
-        'macd2': 26,
-        'macdsig': 9,
+        'macd1': 12, # moving average 1 length
+        'macd2': 26, # moving average 2 length
+        'macdsig': 9, # signal line moving average length
         'atrperiod': 14,  # ATR Period (standard)
         'atrdist': 3.0,   # ATR distance for stop price
         'smaperiod': 30,  # SMA Period (pretty standard)
@@ -29,6 +29,7 @@ class MACD_Crossover(bt.Strategy):
     def __init__(self):
         super(MACD_Crossover, self).__init__()
 
+        # construct MACD indicator
         self.macd = bt.indicators.MACD(self.data,
                                         period_me1=self.p.macd1,
                                         period_me2=self.p.macd2,
@@ -44,18 +45,18 @@ class MACD_Crossover(bt.Strategy):
         self.smadir = self.sma - self.sma(-self.p.dirperiod)
 
     def add_data(cerebro):
-        # add data feed - data class is created below
+        """Add data to backtrader cerebro - data class is created below"""
         data=MyFeed()
         cerebro.add_data(data)
         return data 
 
     def starting_cash(self):
-        # set starting cash value
+        """set starting cash value"""
         self.val_start = self.broker.get_cash()
 
     def notify_order(self, order):
-        # order logging and configuration
-        if order.status == order.Completed:
+        """monitor order status and send order confirmation"""
+        if order.status == order.Completed: # order is completed - nothing to do
             pass
 
         if not order.alive():
@@ -68,7 +69,7 @@ class MACD_Crossover(bt.Strategy):
         
         # Check if an order has been completed
         # Attention: broker could reject order if not enough cash
-        if order.status in [order.Completed]:
+        if order.status in [order.Completed]: # log buy and sell orders
             if order.isbuy():
                 self.log('BUY EXECUTED, %.2f' % order.executed.price)
             elif order.issell():
@@ -77,22 +78,24 @@ class MACD_Crossover(bt.Strategy):
             self.bar_executed = len(self)
 
         elif order.status in [order.Canceled, order.Margin, order.Rejected]:
+            # log cancelled orders
             self.log('Order Canceled/Margin/Rejected')
 
         # Write down: no pending order
         self.order = None
 
     def next(self):
-        # define strategy
+        """Define MACD Strategy. next function is used for running strategies in backtrader cerebro"""
         self.log('Close, %.2f' % self.data.close[0]) # log the closing price of the series from the reference
 
-        share_purchase = int(self.data.close / self.data.close)
+        share_purchase = int(self.data.close / self.data.close) # calculate total shares you can purchase with total portfolio value
         
-        if self.mcross == 1:
-            self.order = self.buy(size = share_purchase)
-            self.log('BUY CREATE, %.2f' % self.data.close[0])
+        if self.mcross == 1: # bullish MACD crossover
+            self.order = self.buy(size = share_purchase) # execute buy order
+            self.log('BUY CREATE, %.2f' % self.data.close[0]) # log buy order
         elif self.macd.signal > self.macd.signal:
             if not self.position:
+                # rebuy MACD after crossover if parameters are true and if strategy sold stock midcrossover based on parameters below
                 if self.macd.macd[0] - self.signal.signal[0] > self.macd.macd[-1] - self.macd.signal[-1]:
                     self.order = self.buy(size = share_purchase)
                     self.log('BUY CREATE, %.2f' % self.data.close[0])
@@ -100,12 +103,13 @@ class MACD_Crossover(bt.Strategy):
         else:
             if self.macd.signal > self.macd.signal:
                 if not self.position:
+                    # sell based on crossover reversal
                     if self.macd.macd[0] - self.signal.signal[0] < self.macd.macd[-1] - self.macd.signal[-1]:
                         self.order = self.sell(size = share_purchase)
                         self.log('SELL CREATE, %.2f' % self.data.close[0])
             elif self.mcross == -1:
-                self.order = self.sell(size = share_purchase)
-                self.log('SELL CREATE, %.2f' % self.data.close[0])
+                self.order = self.sell(size = share_purchase) # sell at bearish crossover
+                self.log('SELL CREATE, %.2f' % self.data.close[0]) # log sale
 
 # class for loading 1 min interval dataset - written by Julian and editted by Angel
 import pandas as pd
@@ -118,11 +122,11 @@ df['datetime'] = pd.to_datetime(df['datetime'])
 class MyFeed(DataBase):
     def __init__(self):
         super(MyFeed, self).__init__()
-        self.list = df
+        self.list = df # dataframe with date-time OHLC structure
         self.n = 0
 
-        self.fromdate = self.list['datetime'][0]
-        self.todate = self.list['datetime'][len(self.list) - 1]
+        self.fromdate = self.list['datetime'][0] # 1st available date within data set
+        self.todate = self.list['datetime'][len(self.list) - 1] # last available date within data set
         self.timeframe = bt.TimeFrame.Minutes
         print("from=%s,to=%s" % (self.fromdate, self.todate))
 

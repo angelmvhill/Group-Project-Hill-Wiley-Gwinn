@@ -13,30 +13,27 @@ class BuyandHold(bt.Strategy):
         print('%s, %s' % (dt.isoformat(), txt))
 
     def add_data(cerebro):
+        """Add data to backtrader cerebro"""
         data=MyFeed()
-        cerebro.add_data(data)
+        cerebro.add_data(data) # load data into backtrader
         return data 
 
     def starting_cash(self):
-        # set starting cash value
+        """set starting cash value"""
         self.val_start = self.broker.get_cash()
     
     def next(self):
-        # Buy shares with all available cash
+        """Buy shares with all available cash"""
         num_of_shares = int(self.broker.get_cash() / self.data.close)
         
-        if not self.position:
+        if not self.position: # buy shares if not in position
             self.buy(size = num_of_shares)
-        if (len(self.datas) - len(self)) == 1:
+        if (len(self.datas) - len(self)) == 1: # close position at last data index
             self.close()
-    
-    def log(self, txt, dt=None):
-        '''Logging function for strategy'''
-        dt = dt or self.datas[0].datetime.date(0)
-        print('%s, %s' % (dt.isoformat(), txt))
 
     def notify_order(self, order):
-        if order.status == order.Completed:
+        """monitor order status and send order confirmation"""
+        if order.status == order.Completed: # order is completed - nothing to do
             pass
 
         if not order.alive():
@@ -48,7 +45,7 @@ class BuyandHold(bt.Strategy):
         
         # Check if an order has been completed
         # Attention: broker could reject order if not enough cash
-        if order.status in [order.Completed]:
+        if order.status in [order.Completed]: # log buy and sell orders
             if order.isbuy():
                 self.log('BUY EXECUTED, %.2f' % order.executed.price)
             elif order.issell():
@@ -57,15 +54,16 @@ class BuyandHold(bt.Strategy):
             self.bar_executed = len(self)
 
         elif order.status in [order.Canceled, order.Margin, order.Rejected]:
+            # log cancelled orders
             self.log('Order Canceled/Margin/Rejected')
 
         # Write down: no pending order
         self.order = None
 
     def calc_roi(self):
-        # calculate returns
-        self.roi = (self.broker.get_value() / self.val_start) - 1.0
-        print('ROI:                     {:.2f}%'.format(100.0 * self.roi))
+        """calculate ROI"""
+        self.roi = (self.broker.get_value() / self.val_start) - 1.0 # calculate ROI as a %
+        print('ROI:                     {:.2f}%'.format(100.0 * self.roi)) # print ROI and only carry 2 decimals
 
 # class for loading 1 min dataset - wrote by Julian
 import pandas as pd
@@ -75,14 +73,15 @@ from backtrader import TimeFrame
 os.chdir(r'C:/Users/angel/Documents/Documents/GitHub/Group-Project-Hill-Wiley-Gwinn/Data')
 df = pd.read_csv('AAPL_1min.csv')
 df['datetime'] = pd.to_datetime(df['datetime'])
+
 class MyFeed(DataBase):
     def __init__(self):
         super(MyFeed, self).__init__()
-        self.list = df
+        self.list = df # dataframe with date-time OHLC structure
         self.n = 0
 
-        self.fromdate = self.list['datetime'][0]
-        self.todate = self.list['datetime'][len(self.list) - 1]
+        self.fromdate = self.list['datetime'][0] # 1st available date within data set
+        self.todate = self.list['datetime'][len(self.list) - 1] # last available date within data set
         self.timeframe = bt.TimeFrame.Minutes
         print("from=%s,to=%s" % (self.fromdate, self.todate))
 
