@@ -1,7 +1,5 @@
 ## OIM 3640 Problem Solving and Software Design Final Project 
 
-Trading Bot Project:
-
 Click here to see the [libraries we used](https://julianwileymac.github.io/Group-Project-Hill-Wiley-Gwinn/libraries)
 
 ## Project Summary and Goals
@@ -14,7 +12,7 @@ For a usage summary and installation guide, see the [README file](https://github
 
 ## Project Evolution
 
-At the beginning of this project, we were originally planning on using two small data sets from Yahoo Finance - a daily interval price data on Apple and a fundamentals dataset on Apple. However, these data sets only went back several years and were extremely small. We wanted to lean closer towards big data so that we could develop a better machine learning and data processing framework that was capable of processing much larger data sets. In attempt to obtain better resources, we applied to the Weissman Foundry Fellowship Program, and were accepted into the Fall 2021 cohort. We were granted $1000 for our project, which we used to purchase a historical data set from First Rate Data on 15-20 years of 1 minute interval price data on 3000 stocks. With this dataset, we were able to build a much more sophisticated framework that is much more scalable in terms of processing large data sets.
+At the beginning of this project, we were originally planning on using two small data sets from Yahoo Finance - a daily interval price data on Apple and a fundamentals dataset on Apple. However, these data sets only went back several years and were extremely small. We wanted to lean closer towards big data so that we could develop a better machine learning and data processing framework that was capable of processing much larger data sets. In attempt to obtain better resources, we applied to the Weissman Foundry Fellowship Program, and were accepted into the Fall 2021 cohort. We were granted $1000 for our project, which we used to purchase a historical data set from First Rate Data on 15-20 years of 1 minute interval price data on 3000 stocks. With this dataset, we were able to build a much more sophisticated framework that is much more scalable in terms of processing large data sets. More specifically, this dataset was much too large to process using internal memory, so we had to process it across multiple machines. Therefore, we had to build a framework capable of processing a dataset this large, and we eliminated it from being an issue in the future given that we planned on using larger data sets.
 
 ## Strategy Performance
 
@@ -39,48 +37,14 @@ MACD Strategy Results:
 
 ![image](https://user-images.githubusercontent.com/77561896/145663200-c78c9712-7ed4-4afa-8c9b-01f02d36db28.png)
 
-## EMR
+## Notebook Output for Inputting Data into EMR
+
+Although this isn't much to look at, we have too much data to create a visual output without spending too much money (the data set is 100 GB). This is the first 20 rows of a Spark dataframe, which is qthe equivalent to a pandas dataframe in Spark. The main difference is that this dataframe is representational, meaning that it tells the machine where the data is stored, rather than actually importing it into memory. With the knowledge of this location, the machine can querie the data when needed.
 
 ![image](https://user-images.githubusercontent.com/77561896/145662715-e927ea50-31e0-42d9-b2d1-0a8610abd184.png)
 
+To learn more about Spark dataframes, click [here](https://spark.apache.org/docs/latest/sql-programming-guide.html).
 
+## Summary
 
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/julianwileymac/Group-Project-Hill-Wiley-Gwinn/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
-
-
+Overall, this project was very successful. We accomplished a lot of goals and were able to establish a solid framework that we are excited to continue building off of in the future.

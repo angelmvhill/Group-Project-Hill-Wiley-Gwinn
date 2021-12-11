@@ -39,7 +39,7 @@ df = df.where(df["sym"].isin(stonks))
 
 df = df.withColumn("label", lit(0.0))
 
-windowSpec = Window.orderBy("datetime").rowsBetween(-10,0)
+windowSpec = Window.partitionBy('sym').orderBy("datetime").rowsBetween(-10,0)
 df = df.withColumn('sma10', avg('close').over(windowSpec))
 
 # More documentation about backtrader: https://www.backtrader.com/
