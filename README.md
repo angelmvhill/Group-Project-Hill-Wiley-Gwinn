@@ -2,12 +2,9 @@
 
 ## Project Summary
 
-This project contains 3 main parts: an algorithmic trading strategy framework, a data processing framework, and a machine learning framework. To run this code, you will need to install the following packages:
-- backtrader
-- os
-- datetime
+This project contains 3 main parts: an algorithmic trading strategy framework, a data processing framework, and a machine learning framework. To run this code, you will need to install [the following packages](https://julianwileymac.github.io/Group-Project-Hill-Wiley-Gwinn/libraries).
 
-The goal of this project was to create a framework for developing, training, and backtesting algorithmic trading models. We were certainly successful in this project as our code runs as it was designed to. 
+The goal of this project was to create a framework for developing, training, and backtesting algorithmic trading models. Although we created a strategy to backtest, the focus was not on the strategy itself, but rather the framework itself. THe strategy is replaceable, and the framework around the sample strategy we created is what will fuel our future algotrading strategy developments.
 
 ## Algotrading Strategy Framework
 
